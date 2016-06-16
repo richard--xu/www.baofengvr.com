@@ -1,0 +1,13 @@
+{
+  "name": "sassCore",
+  "homepage": "https://github.com/marvin1023/sassCore",
+  "_release": "bf8d750bb0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bf8d750bb02a9383d40db863dc59fbdb0dfaa17a"
+  },
+  "_source": "https://github.com/marvin1023/sassCore.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/marvin1023/sassCore.git"
+}

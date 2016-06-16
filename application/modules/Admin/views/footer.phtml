@@ -1,0 +1,12 @@
+<script type="text/javascript">
+var host = "<?php echo Bootstrap::$config['imgDomain']; ?>";
+</script>
+<?php
+            if ($jsLoadPath = Common::loadCssAndJsUrl(lcfirst($curModule), lcfirst($curController), lcfirst($curAction), 'js')) {
+                foreach ($jsLoadPath as $js) {
+                    echo '<script type="text/javascript" src="' . $js . '"></script>';
+                }
+            }
+        ?>
+    </body>
+</html>

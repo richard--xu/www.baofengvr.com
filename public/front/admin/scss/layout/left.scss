@@ -1,0 +1,27 @@
+.left-side {
+	background: #00a5ed;
+	width: 170px;
+	position: fixed;
+	top: 70px;
+	bottom: 0;
+	color: #fff;
+	text-align: center;
+}
+
+.side-menu {
+	padding-top: 30px;
+	.item {
+		width: 100%;
+		a {
+			color: #fff;
+			display: block;
+			height: 62px;
+			line-height: 62px;
+			padding-left: 30px;
+		}
+		.active {
+			background: #fff;
+			color: #333;
+		}
+	}
+}

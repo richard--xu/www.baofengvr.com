@@ -1,0 +1,35 @@
+// field
+.text-field { border: 1px solid #ddd; }
+
+.select-field {
+	height: 42px;
+
+	option { padding: 8px 0; }
+}
+
+.textarea-field {
+	border: 1px solid #ddd;
+	width: 410px;
+	height: 122px;
+	padding: 5px;
+	resize: none;
+}
+
+.radio-field {
+	margin-right: 14px;
+
+	input { vertical-align: middle; }
+}
+
+.checkbox-field {
+	margin-right: 14px;
+
+	input { vertical-align: middle; }
+}
+
+.date-field {
+	border: 1px solid #ddd;
+	background: url(../image/slice2.png) no-repeat 94px 7px;
+
+	&:focus { background-position: 94px -24px; }
+}

@@ -1,0 +1,128 @@
+// select component
+.component-select {
+	background: #eee;
+	border: 1px solid #ccc;
+	width: 260px;
+	height: 310px;
+	
+	.cheader {
+		background: #ddd;
+		height: 46px;
+		line-height: 46px;
+		color: #333;
+		padding: 0 20px;
+		margin-bottom: 12px;
+	}
+
+	.cbody {
+		padding: 0 20px;
+		margin-bottom: 10px;
+
+		.text-field {
+			height: 30px;
+			width: 168px;
+			padding: 0 10px;
+			margin-right: 5px;
+		}
+
+		.action { margin-bottom: 8px; }
+
+		.icon-wrap { margin-right: 12px; }
+	}
+
+	.component-select-list {
+		background: #fff;
+		border: 1px solid #ccc;
+		height: 162px;
+		overflow-y: auto;
+
+		li {
+			height: 34px;
+			line-height: 34px;
+			padding-left: 10px;
+			position: relative;
+		}
+
+		li:hover { background: #d1effc; }
+	}
+
+	.component-select-item {
+		input {
+			vertical-align: middle;
+			margin-right: 4px;
+		}
+
+		span { vertical-align: middle; }
+	}
+
+	.component-select-editwrap { display: none; }
+
+	.cfooter { padding: 0 20px; }
+}
+
+
+// category component
+.component-category {
+	font-size: 12px;
+	position: relative;
+	
+	.edit {
+		display: none;
+		width: 160px;
+		height: 36px;
+		border: 1px solid #ddd;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	.editing {
+		.view {
+			display: none;
+		}
+		.edit {
+			display: inline;
+		}
+	}
+
+	.btn-default {
+		width: 160px;
+		height: 40px;
+	}
+
+	.p { position: relative; }
+
+	.s {
+		border-left: 1px solid #999;
+		margin-left: 80px;
+		padding-left: 120px;
+		padding-top: 10px;
+		position: relative;
+
+		.group {
+			position: relative;
+			z-index: 9;
+		}
+
+		&:last-child {
+			border-left: 0 none;
+
+			& > .v-line {
+				width: 1px;
+				height: 31px;
+				background: #999;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+
+	.h-line {
+		width: 136px;
+		height: 1px;
+		background: #999;
+		position: absolute;
+		top: 30px;
+		left: 0;
+	}
+}

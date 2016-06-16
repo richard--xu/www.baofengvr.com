@@ -1,0 +1,44 @@
+/**
+ * horizontal list
+ * @param:
+ *   $lineMb    `line margin-bottom`
+ *   $leftMt    `left margin-top`
+ *   $leftWidth `left width`
+ */
+@mixin horizontal-list($lineMb, $leftMt, $leftWidth) {
+	.chunk {
+		margin-bottom: $lineMb;
+		overflow: hidden;
+
+		.left {
+			float: left;
+			display: block;
+			margin-top: $leftMt;
+			width: $leftWidth;
+			text-align: right;
+		}
+
+		.right { overflow: hidden; }
+	}
+}
+
+
+/**
+ * vertical list
+ * @param:
+ *   $lineMb  `line margin-bottom`
+ *   $frontMb `left width`
+ */
+@mixin vertical-list($lineMb, $frontMb) {
+	.chunk {
+		margin-bottom: $lineMb;
+		overflow: hidden;
+
+		.front {
+			display: block;
+			margin-bottom: $frontMb;
+		}
+
+		.back { }
+	}
+}

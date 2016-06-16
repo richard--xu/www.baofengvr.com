@@ -1,0 +1,97 @@
+.btn {
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	border: 0 none;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+
+.btn-default {
+	background: #e9e9e9;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	color: #333;
+}
+
+.btn-primary {
+	background: #eee;
+	border: 1px solid #ccc;
+	color: #333;
+	padding: 0 14px;
+	height: 30px;
+	&:hover {
+		color: #00a5ed;	
+	}
+}
+
+.btn-secondary {
+	background: #00a5ed ;
+	border: 0 none;
+	color: #fff;
+	display: inline-block;
+	&:hover {
+		color: #fff;
+		opacity: .9;
+		filter: alpha(opacity=90);
+	}
+}
+
+// 用于切换自定义元件按钮
+.btn-thirdly {
+	background: #fff;
+	border: 1px solid #bbbaba;
+	border-radius: 3px;
+	color: #333;
+	width: 170px;
+	height: 40px;
+	margin-right: 6px;
+	&:hover {
+		background: #e4f3fa;
+	}
+}
+
+.submit-btn {
+	background: #00a5ed;
+	border-radius: 3px;
+	color: #fff;
+}
+
+.add-btn {
+	background: #e9e9e9;
+	border-radius: 3px;
+	border: 1px solid #bbbaba;
+	color: #333;
+	.icon-add {
+		margin-right: 6px;
+	}
+}
+
+.sc-cancel-btn {
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	color: #333;
+	width: 78px;
+	height: 28px;
+}
+
+.sc-save-btn {
+	background: #00a5ed;
+	border-radius: 3px;
+	color: #fff;
+	width: 80px;
+	height: 30px;
+}
+
+.search-btn {
+	background: #00a5ed;
+	width: 110px;
+	height: 38px;
+	color: #fff;
+	border-radius: 3px;
+	&:hover {
+		opacity: .9;
+		filter: alpha(opacity=90);
+	}
+}

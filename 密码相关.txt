@@ -1,0 +1,8 @@
+﻿linux:
+
+用户名: root
+密码：koema-2012
+
+数据库：
+用户名：root
+密码：vrofkoema

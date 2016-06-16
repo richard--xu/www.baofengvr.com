@@ -1,0 +1,152 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">
+
+        <div class="title-bar">
+            <h3 class="icon-wrap">
+                <span class="icon icon-h"></span>
+                <span>专题管理</span>
+            </h3>
+        </div>
+        <!-- grids -->
+        <div class="grid">
+            <!-- 头部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <button class="btn btn-primary export-btn icon-wrap" nt="addnew">
+                        <span class="icon icon-plus"></span>
+                        <span>新增专题</span>
+                    </button>
+                </div>
+            </div>
+            <!-- table -->
+            <table class="grid-body">
+                <thead>
+                    <tr>
+                        <!-- <th>
+                            <input type="checkbox" nt="checkAll"/>
+                        </th> -->
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>类别</th>
+                        <th>顺序</th>
+                        <th>作品</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tbd">
+                <?php 
+                    if ($topic) {
+                        foreach ($topic as $value) { 
+                ?>
+                    <tr>
+                        <!--<td>
+                            <input type="checkbox" nt="check" data-id="<?php echo $value['id'] ?>"/>
+                        </td>-->
+                        <td><?php echo $value['id']; ?></td>
+                        <td><?php echo $value['name']; ?></td>
+                        <td>
+                            <?php 
+                                echo isset($category[$value['categoryId']]) 
+                                            ? $category[$value['categoryId']]['name'] 
+                                            : ''; 
+                            ?>
+                        </td>
+                        <td><?php echo $value['squence']; ?></td>
+                        <td>
+                            <?php
+                                if (isset($productList[$value['id']])) {
+                                    foreach ($productList[$value['id']] as $k => $val) {
+                                        echo '<div>'. $val['title']. '</div>';
+                                    }
+                                } 
+                            ?>
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="addnew" data-id="<?php echo $value['id'] ?>">
+                                <span class="icon icon-edit"></span>
+                                <span>编辑</span>
+                            </a>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="delete" data-delete="<?php echo $value['id'] ?>">
+                                <span class="icon icon-del"></span>
+                                <span>删除</span>
+                            </a>
+                        </td>
+                    </tr>
+                <?php }} ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- grids end -->
+    </div>
+</div>
+<script type="text/html" id="dealTpl">
+    <form id="dealForm">
+        <ul class="chunk-list search">
+            <li class="chunk">
+                <label class="left">
+                    <span>专题名称：</span>
+                </label>
+                <div class="right">
+                    <input type="text" name="name" class="text-field" placeholder="请输入专题名称" value="${name}" />
+                </div>
+            </li>
+            <li class="chunk">
+                <label class="left">
+                    <span>专题分类：</span>
+                </label>
+                <div class="right">
+                    <select name="categoryId" class="select-field" {@if categoryId}disabled="disabled"{@/if}>
+                        <option value="">请选择</option>
+                        <?php
+                            if ($category) {
+                                foreach ($category as $key => $value) { 
+                        ?>
+                        <option value="<?php echo $value['id']; ?>" {@if categoryId == <?php echo $value['id']; ?>} selected {@/if} >
+                            <?php echo $value['name']; ?>
+                        </option>
+                        <?php }} ?>
+                    </select>
+                    {@if id}
+                        <input type="hidden" name="id" value="${id}" />
+                     {@/if}
+                </div>
+            </li>
+            <li class="chunk">
+                <label class="left">
+                    <span>设定顺序：</span>
+                </label>
+                <div class="right">
+                    <input type="text" name="squence" class="text-field" placeholder="请输入专题顺序" value="${squence}" />
+                </div>
+            </li>
+            <li class="chunk" style="overflow: visible;">
+                <label class="left">
+                    <span>选择作品：</span>
+                </label>
+                <div class="right" style="overflow: visible;width: 580px;float: left;">
+                    <div class="product_autosearch" name=""></div>
+                    <!-- <input type="text" class="product_autosearch text-field" id="search" placeholder="选择作品名称,点击+号添加作品" name="" /> -->&nbsp;
+                    <a href="javascript:void(0)" id="searchAdd">
+                        <span class="icon icon-add"></span>
+                    </a>
+                    <div id="addResult" class="chooseResult">
+                        {@each tmpProducts as item,index}
+                        <span>${item.title}
+                        <i class="cancelIcon" onClick="cancelProduct('${item.id}')">&nbsp;</i>
+                        </span>
+                        {@/each}
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</script>
+<script type="text/javascript">
+    var topic = <?php echo $topic ? json_encode($topic) : 'null'; ?>;
+    var productList = <?php echo $productList ? json_encode($productList) : 'null'; ?>;
+</script>
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

@@ -1,0 +1,130 @@
+.wdialog-bg {
+	position: fixed;
+	background: url(../images/fix_ie_alpha.png) repeat;
+	background: rgba(99, 99, 99, .6);	
+	z-index: 1111;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow-y: auto;
+}
+.wdialog-wrap {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1112;
+	overflow-y: auto;
+}
+.wdialog {
+	transition: all 0.2s ease-out 0s;
+	position: relative;
+	margin: 5% auto;
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 1px 8px rgba(99, 99, 99, 0.6)
+}
+.wdialog-container-tooltip {
+	padding: 0 8%;
+	margin-bottom: 15px;
+}
+
+.wdialog-msg {
+	text-align: center;
+	padding: 4px 18px;
+	border: 1px solid #aaa;
+	background: #efefef;
+	color: #454545;
+	font-size: 14px;
+}
+
+.wdialog-msg-right {
+	border-color: #8cc152;
+	background-color: #d8f5b8;
+	color: #8cc152;
+}
+
+.wdialog-msg-error {
+	border-color: #da4453;
+	background-color: #fdb7be;
+	color: #da4453;
+}
+
+.wdialog-xbtn {
+	background: url(../admin/image/slice.png) no-repeat -64px -159px;
+	cursor: pointer;
+	text-indent: -99em;
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 9px;
+    right: 14px;
+}
+.wdialog-xbtn:hover {
+	background-position: -42px -159px;
+}
+
+.wdialog-container-header {
+	height: 40px;
+	padding: 0 18px;
+	background: #eee;
+	border-radius: 4px 4px 0 0;
+}
+.wdialog-container-header h3 {
+	color: #333;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 40px;
+}
+.wdialog-container-body {
+	padding: 15px 18px 15px;
+}
+.wdialog-container-footer {
+	padding: 18px;
+	text-align: right;
+}
+.wdialog-container-footer button {
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 15px;
+	min-width: 80px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.wdialog-container-footer button:hover {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.wdialog-container-footer button:focus {
+	outline: none;
+	text-decoration: none;
+}
+.wdialog-container-footer .dialog-btn-default {
+	background: #00a5ed;
+    border: 1px solid #00a5ed;
+    color: #fff;
+}
+
+.wdialog-container-footer .dialog-btn-secondary {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+
+/* -- @ start doalog theme  --*/
+.dialog-for-more {
+	
+}
+.form-dialog-for-form {
+
+}
+.dialog-for-msg {
+	
+}
+/* -- @ end dialog theme --*/

@@ -1,0 +1,374 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">
+
+        <div class="title-bar">
+            <h3 class="icon-wrap">
+                <span class="icon icon-h"></span>
+                <span>作品管理</span>
+            </h3>
+        </div>
+
+       <!-- search -->
+       <form nt-type="search-form" action="/sites/admin/applylist/index" method="get">
+            <div class="search">
+                <div class="line">
+                    <?php 
+                        $userid = Common::getSession('USERID'); 
+                        if (!in_array($_SESSION['adminFlag'.$userid], array(3))) {
+                    ?>
+                    <label class="field-wrap">
+                        <span>作者姓名：</span>
+                        <input class="text-field" type="text" placeholder="请输入作者姓名" value="<?php echo $name; ?>" name="name"/>
+                    </label>
+                    <?php } ?>
+                    <label class="field-wrap">
+                        <span>作品编号：</span>
+                        <input class="text-field" type="text" placeholder="请输入作品编号" value="<?php echo $identifier; ?>" name="identifier"/>
+                    </label>
+                    <label class="field-wrap">
+                        <span>发布日期：</span>
+                        <input id="start-date" class="date-field" type="text" value="<?php echo $start; ?>" placeholder="请选择日期" name="start"/>
+                        <span>至</span>
+                        <input id="end-date" class="date-field" type="text" value="<?php echo $end; ?>" placeholder="请选择日期" name="end"/>
+                    </label>
+                </div>
+                <div class="line">
+                    <label class="field-wrap">
+                        <span>作品名称：</span>
+                        <input class="text-field" type="text" placeholder="请输入作品名称" value="<?php echo $opusName; ?>" name="opusName" />
+                    </label>
+                    <?php 
+                        if (!in_array($_SESSION['adminFlag'.$userid], array(4, 3))) {
+                    ?>
+                    <label class="field-wrap">
+                        <span>学校名称：</span>
+                        <input class="text-field" type="text" placeholder="请输入学校名称" value="<?php echo $schoolName; ?>" name="schoolName" />
+                    </label>
+                    <?php } ?>
+                    <?php 
+                        if (!in_array($_SESSION['adminFlag'.$userid], array(3))) {
+                    ?>
+                    <label class="field-wrap">
+                        <span>校内奖项：</span>
+                        <select class="select-field" name="prize">
+                            <option value="">全部</option>
+                            <?php if ($schoolPrize) { foreach ($schoolPrize as $value) {?>
+                            <option <?php echo $value == $prize ? 'selected' : ''; ?> value="<?php echo $value ?>"><?php echo $value ?></option>
+                            <?php }} ?>
+                        </select>
+                    </label>
+                    <?php } ?>
+
+                    <?php if ($topicItems) { ?>
+                    <label class="field-wrap">
+                        <span>活动名称：</span>
+                        <select class="select-field" name="activeName">
+                            <option value="">全部</option>
+                            <?php foreach ($topicItems as $value) {?>
+                            <option <?php echo $value['id'] == $activeName ? 'selected' : ''; ?> value="<?php echo $value['id'] ?>">
+                                <?php echo Common::cut_str($value['name'], 20); ?>
+                            </option>
+                            <?php } ?>
+                        </select>
+                    </label>
+                    <?php if ($selectType) { ?>
+                    <label class="field-wrap">
+                        <span>类别：</span>
+                        <select class="select-field" name="type">
+                            <option value="">全部</option>
+                            <?php if ($activeName && isset($topicItems[$activeName]) && isset($topicItems[$activeName]['classityItems']) 
+                                        && $topicItems[$activeName]['classityItems']) { 
+                                    foreach ($topicItems[$activeName]['classityItems'] as $value) {
+                            ?>
+                            <option <?php echo $value['id'] == $type ? 'selected' : ''; ?> value="<?php echo $value['id'] ?>">
+                                <?php echo $value['name'] ?>
+                            </option>
+                            <?php }} ?>
+                        </select>
+                    </label>
+                    <?php }} ?>
+                </div>
+                <div class="line">
+                    <button class="btn search-btn icon-wrap">
+                        <span class="icon icon-search"></span>
+                        <span>查询</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- grids -->
+        <div class="grid">
+            <!-- 头部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <!-- <button class="btn btn-primary download-btn icon-wrap" nt="download-selected">
+                        <span class="icon icon-download"></span>
+                        <span>下载</span>
+                    </button> -->
+                    <?php 
+                        if (!in_array($_SESSION['adminFlag'.$userid], array(4))) {
+                    ?>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-data">
+                        <span class="icon icon-export"></span>
+                        <span>导出数据</span>
+                    </button>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-auth">
+                        <span class="icon icon-export"></span>
+                        <span>导出负责人</span>
+                    </button>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-info">
+                        <span class="icon icon-export"></span>
+                        <span>导出初赛总结</span>
+                    </button>
+                    <?php } ?>
+                </div>
+                <div class="fr">
+                    <?php
+                        echo $shortList;
+                    ?>
+                </div>
+            </div>
+            <!-- table -->
+            <table class="grid-body">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" nt="checkAll"/>
+                        </th>
+                        <th>作品名称</th>
+                        <th>作品编号</th>
+                        <th>活动名称</th>
+                        <th>类别</th>
+                        <?php if (!in_array($_SESSION['adminFlag'.$userid], array(3))) {?>
+                        <th>学校名称</th>
+                        <th>作者姓名</th>
+                        <th>校内奖项</th>
+                        <?php } ?>
+                        <th>是否晋级</th>
+                        <th>市级奖项</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tbd">
+                    <?php if ($list) { foreach ($list as $value) {?>
+                    <tr data-item="<?php echo $value['id'] ?>">
+                        <td><input type="checkbox" nt="check" data-id="<?php echo $value['id'] ?>"/></td>
+                        <td data-opusName="<?php echo $value['id'] ?>"><?php echo $value['opusName']; ?></td>
+                        <td><?php echo $value['identifier']; ?></td>
+                        <td><?php echo isset($topicItems[$value['TopicInfo_id']]) ? $topicItems[$value['TopicInfo_id']]['name'] : ''; ?></td>
+                        <td nt="classify"><?php 
+                            echo isset($classityList[$value['TopicClassify_id']]) ? $classityList[$value['TopicClassify_id']]['name'] : ''; 
+                        ?></td>
+                        <?php if (!in_array($_SESSION['adminFlag'.$userid], array(3))) {?>
+                        <td data-schoolName="<?php echo $value['id'] ?>"><?php echo $value['schoolName']; ?></td>
+                        <td data-ahthorName="<?php echo $value['id'] ?>">
+                            <div class="authName">
+                                <span>
+                                <?php 
+                                    echo isset($opusList[$value['id']]) ? join($opusList[$value['id']], '&nbsp;') : '';
+                                ?>
+                                </span>
+                                <div class="auth-pop">
+                                    <?php 
+                                    echo isset($opusList[$value['id']]) ? join($opusList[$value['id']], '<br>') : '';
+                                ?>
+                                </div>
+                            </div>
+                        </td>
+                        <td><?php if (in_array($_SESSION['adminFlag'.$userid], array(1))) { ?>
+                            <select nt="prize" data-item="<?php echo $value['id'] ?>">
+                                <?php if ($schoolPrize) { foreach ($schoolPrize as $val) {?>
+                                <option <?php echo $val == $value['schoolPrize'] ? 'selected' : ''; ?> value="<?php echo $val ?>"><?php echo $val ?></option>
+                                <?php }} ?>
+                            </select>
+                            <?php } else {
+                                    echo $value['schoolPrize'];
+                                  } 
+                            ?>
+                        </td>
+                        <?php } ?>
+                        <td>
+                            <select nt="pass" data-item="<?php echo $value['id'] ?>" <?php echo in_array($_SESSION['adminFlag'.$userid], array(4)) ? 'disabled' : ''; ?> >
+                                <option value="1" <?php echo $value['status'] == 1 ? 'selected' : ''; ?> >晋级</option>
+                                <option value="2" <?php echo $value['status'] == 2 ? 'selected' : ''; ?> >不晋级</option>
+                                <option value="0" <?php echo $value['status'] == 0 ? 'selected' : ''; ?> >评选中</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select nt="up" <?php echo $value['status'] != 1 || in_array($_SESSION['adminFlag'.$userid], array(4)) ? 'disabled' : ''; ?> data-item="<?php echo $value['id'] ?>">
+                                <option value="1" <?php echo $value['cityPrize'] == 1 ? 'selected' : ''; ?>>一等奖</option>
+                                <option value="2" <?php echo $value['cityPrize'] == 2 ? 'selected' : ''; ?>>二等奖</option>
+                                <option value="3" <?php echo $value['cityPrize'] == 3 ? 'selected' : ''; ?>>三等奖</option>
+                                <option value="0" <?php echo $value['cityPrize'] == 0 ? 'selected' : ''; ?>>无</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="review-more" data-view="<?php echo $value['id'] ?>">
+                                <span class="icon icon-detail"></span>
+                                <span>查看详情</span>
+                            </a>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="download" data-download="<?php echo $value['id'] ?>">
+                                <span class="icon icon-load"></span>
+                                <span>下载</span>
+                            </a>
+                            <?php 
+                                if (!in_array($_SESSION['adminFlag'.$userid], array(4))) {
+                            ?>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="comment" data-comment="<?php echo $value['id'] ?>">
+                                <span class="icon icon-comment"></span>
+                                <span>评语</span>
+                            </a>
+                            <?php } ?>
+
+                            <?php 
+                                if (in_array($_SESSION['adminFlag'.$userid], array(1))) {
+                            ?>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="delete" data-delete="<?php echo $value['id'] ?>">
+                                <span class="icon icon-del"></span>
+                                <span>删除</span>
+                            </a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <?php }} ?>
+                </tbody>
+            </table>
+           <!-- 底部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <!-- <button class="btn btn-primary download-btn icon-wrap" nt="download-selected">
+                        <span class="icon icon-download"></span>
+                        <span>下载</span>
+                    </button> -->
+                    <?php 
+                        if (!in_array($_SESSION['adminFlag'.$userid], array(4))) {
+                    ?>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-data">
+                        <span class="icon icon-export"></span>
+                        <span>导出数据</span>
+                    </button>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-auth">
+                        <span class="icon icon-export"></span>
+                        <span>导出负责人</span>
+                    </button>
+                    <button class="btn btn-primary export-btn icon-wrap" nt="export-info">
+                        <span class="icon icon-export"></span>
+                        <span>导出初赛总结</span>
+                    </button>
+                    <?php } ?>
+                </div>
+                <div class="fr">
+                    <?php echo $pageList; ?>
+                </div>
+            </div>
+            <!-- 底部功能栏 end -->
+        </div>
+        <!-- grids end -->
+    </div>
+</div>
+<!-- main end -->
+<script type="text/html" id="viewTpl">
+    <ul class="chunk-list">
+        <li class="chunk">
+            <label class="left">
+                <span>作品名称：</span>
+            </label>
+            <div class="right">
+                <p nt="opusName"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>作品编号：</span>
+            </label>
+            <div class="right">
+                <p nt="identifier"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>类别：</span>
+            </label>
+            <div class="right">
+                <p nt="TopicClassify_id"></p>
+            </div>
+        </li>
+        <?php if (!in_array($_SESSION['adminFlag'.$userid], array(3))) {?>
+        <li class="chunk">
+            <label class="left">
+                <span>学校名称：</span>
+            </label>
+            <div class="right">
+                <p nt="schoolName"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>作者姓名：</span>
+            </label>
+            <div class="right">
+                <p nt="ahthorName"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>校内奖项：</span>
+            </label>
+            <div class="right">
+                <p nt="schoolPrize"></p>
+            </div>
+        </li>
+        <?php } ?>
+        <li class="chunk">
+            <label class="left">
+                <span>是否晋级：</span>
+            </label>
+            <div class="right">
+                <p nt="status"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>市级奖项：</span>
+            </label>
+            <div class="right">
+                <p nt="cityPrize"></p>
+            </div>
+        </li>
+        <li class="chunk">
+            <label class="left">
+                <span>评语：</span>
+            </label>
+            <div class="right">
+                <p nt="content"></p>
+            </div>
+        </li>
+    </ul>
+</script>
+
+<script type="text/html" id="commentTpl">
+    <ul class="comment-view">
+    {@each list as item,index}
+        <li>
+            <label>学校名称：</label>
+            <span>${item._schoolName}</span>
+        </li>
+        <li>
+            <label>作品名称：</label>
+            <span>${item._opusName}</span>
+        </li>
+        <li>
+            <label>评语内容：</label>
+            <textarea nt="com-txt"></textarea>
+        </li>
+    {@/each}
+    </ul>
+</script>
+<script type="text/javascript">
+    var topicItems = '<?php echo json_encode($topicItems); ?>' ;
+</script>
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

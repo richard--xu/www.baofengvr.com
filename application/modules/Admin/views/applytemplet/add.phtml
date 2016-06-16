@@ -1,0 +1,288 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">
+        <div class="title-bar">
+            <h3 class="icon-wrap">
+                <span class="icon icon-h"></span>
+                <span>创建报名信息模板</span>
+            </h3>
+        </div>
+        
+        <div class="field-section">
+            <!-- 样例 -->
+            <div class="form-field">
+                <div class="title">
+                    <h4>报名信息模板</h4> 
+                </div>
+                <ul class="sample-list">
+                    <li class="chunk">
+                        <label class="left">
+                            <span class="red">*</span><span>报名模板名称：</span>
+                        </label>
+                        <div class="right">
+                            <input type="text" class="text-field" data-bind="value: templetName" placeholder="请输入模板名称" />
+                        </div>
+                    </li>
+                    <!-- knockout 循环模板 -->
+                    <!-- ko foreach: element -->
+                    <li class="chunk">
+                        <label class="left">
+                            <!-- ko if: must == 1 -->
+                            <span class="red">*</span>
+                            <!-- /ko -->
+                            <span data-bind="text: title.concat('：')"></span>
+                        </label>
+                        <div class="right">
+                            <!-- ko if: typeof ele !== 'undefined' && ele == 'text' -->
+                                <!-- ko if: typeof type != 'undefined' && type == 'password' -->
+                                <input class="text-field" type="password" data-bind="attr: {placeholder: '请输入'.concat(title)}" />
+                                <!-- /ko -->
+
+                                <!-- ko if: typeof type == 'undefined' || type != 'password' -->
+                                <input class="text-field" type="text" data-bind="attr: {placeholder: '请输入'.concat(title)}" />
+                                <!-- /ko -->
+                            <!-- /ko -->
+
+                            <!-- ko if: typeof ele !== 'undefined' && ele == 'textarea' -->
+                            <textarea class="textarea-field"></textarea>
+                            <!-- /ko -->
+
+                            <!-- ko if: typeof ele !== 'undefined' && ele == 'select' -->
+                            <select class="select-field" data-bind="options: $data.items"></select>
+                            <!-- /ko -->
+
+                            <!-- ko if: typeof ele === 'undefined' && typeof elements !== 'undefined' -->
+                            <input class="text-field" id="student-number-1" type="text" /> - <input class="text-field" id="student-number-2" type="text" />
+                            <!-- /ko -->
+
+                            <!-- ko if: typeof ele !== 'undefined' && ele == 'fileupload' -->
+                            <button class="btn btn-thirdly icon-wrap">
+                                <span class="icon icon-upload"></span>
+                                <span>上传作品</span>
+                            </button>
+                            <!-- /ko -->
+
+                            <!-- ko if: typeof del !== 'undefined' && del -->
+                            <a href="#" data-bind="click: $parent.removeItem">删除</a>
+                            <!-- /ko -->
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    <!-- knockout 循环模板END -->
+                    <!-- 发布按钮 -->
+                    <li class="chunk">
+                        <label class="left"></label>
+                        <div class="right">
+                            <button class="btn btn-secondary" data-bind="click: submitForm">发 布</button>
+                            <span class="error" data-bind="text: templetMsg"></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 创建样例 -->
+            <div class="form-field">
+                <div class="title">
+                    <h4>自定义元件：</h4> 
+                </div>
+                <ul class="create-list">
+                    <li class="chunk">
+                        <label class="left"></label>
+                        <div class="right">
+                            <button class="btn btn-thirdly icon-wrap" data-bind="click: addElementShow.bind($data, 1)">
+                                <span class="icon icon-switch-text"></span>
+                                <span>添加单行文本框</span>
+                            </button>
+                            <button class="btn btn-thirdly icon-wrap" data-bind="click: addElementShow.bind($data, 2)">
+                                <span class="icon icon-switch-select"></span>
+                                <span>添加下拉框</span>
+                            </button>
+                            <button class="btn btn-thirdly icon-wrap" data-bind="click: addElementShow.bind($data, 3)">
+                                <span class="icon icon-switch-textarea"></span>
+                                <span>添加多行文本框</span>
+                            </button>
+                            <button class="btn btn-thirdly icon-wrap" data-bind="click: addElementShow.bind($data, 4)">
+                                <span class="icon icon-switch-upload"></span>
+                                <span>添加上传文件</span>
+                            </button>
+                        </div>
+                    </li>
+                    <!-- ko if: eleType() == 1 -->
+                    <li class="chunk custom-container">
+                        <label class="left">
+                            <span>单行文本框名称：</span>
+                        </label>
+                        <div class="right">
+                            <div class="line">
+                                <input class="text-field" type="text" data-bind="textInput: textElement().title" maxlength="16" placeholder="请输入单行文本框名称" name="name" />
+                                <select class="select-field" data-bind="options: allowTypeConfig()[1],
+                                                                        optionsText: 'name',
+                                                                        optionsValue: 'type',
+                                                                        value: textElement().type">
+                                </select>
+                            </div>
+                            <div class="line">
+                                <label class="radio-field">
+                                    <input type="radio" name="text-require" data-bind="checked: textElement().must" value="1" />
+                                    <span>必填</span>
+                                </label>
+                                <label class="radio-field">
+                                    <input type="radio" name="text-require" data-bind="checked: textElement().must" value="0" />
+                                    <span>非必填</span>
+                                </label>
+                            </div>
+                            <div class="line">
+                                <button class="btn btn-primary icon-wrap" data-bind="click: write.bind($data, 'text')">
+                                    <span class="icon icon-add"></span>
+                                    <span>确认添加</span>
+                                </button>
+                                <span class="error" data-bind="text: textElement().msg"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- /ko -->
+
+                    <!-- ko if: eleType() == 2 -->
+                    <li class="chunk custom-container">
+                        <label class="left">
+                            <span>下拉框名称：</span>
+                        </label>
+                        <div class="right">
+                            <div class="line">
+                                <input type="text" class="text-field" data-bind="textInput: selectElement().title" maxlength="16" placeholder="请输入下拉框名称" />
+                            </div>
+                            <div class="line">
+                                <div class="component component-select">
+                                    <div class="cheader">
+                                        <h5>添加下拉框</h5>
+                                    </div>
+                                    <div class="cbody">
+                                        <div class="action">
+                                            <input type="text" class="text-field" data-bind="value: selectItemToAdd" maxlength="16" placeholder="请输入下拉选项名称" />
+                                            <a href="#" data-bind="click: addSelectItem">
+                                                <span class="icon icon-add"></span>
+                                            </a>
+                                        </div>
+                                        <ul class="component-select-list" style="width: 190px;" data-bind="foreach: selectItems">
+                                            <li>
+                                                <div class="component-select-item">
+                                                    <span style="display: inline-block;width: 138px;" data-bind="text:$data"></span>
+                                                    <a href="#" data-bind="click: $root.removeSelectItem.bind($data, $data)">
+                                                        <span class="icon icon-rm"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <label class="radio-field">
+                                    <input type="radio" name="select-require" data-bind="checked: selectElement().must" value="1" />
+                                    <span>必填</span>
+                                </label>
+                                <label class="radio-field">
+                                    <input type="radio" name="select-require" data-bind="checked: selectElement().must" value="0" />
+                                    <span>非必填</span>
+                                </label>
+                            </div>
+                            <div class="line">
+                                <button class="btn btn-primary icon-wrap" data-bind="click: write.bind($data, 'select')">
+                                    <span class="icon icon-add"></span>
+                                    <span>确认添加</span>
+                                </button>
+                                <span class="error" data-bind="text: selectElement().msg"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                    
+                    <!-- ko if: eleType() == 3 -->
+                    <li class="chunk custom-container">
+                        <label class="left">
+                            <span>多行文本框名称：</span>
+                        </label>
+                        <div class="right">
+                            <div class="line">
+                                <input class="text-field" type="text" data-bind="textInput: textareaElement().title" maxlength="16" placeholder="请输入多行文本框名称" />
+                            </div>
+                            <div class="line">
+                                <label class="radio-field">
+                                    <input type="radio" name="textarea-require" data-bind="checked: textareaElement().must" value="1" />
+                                    <span>必填</span>
+                                </label>
+                                <label class="radio-field">
+                                    <input type="radio" name="textarea-require" data-bind="checked: textareaElement().must" value="0" />
+                                    <span>非必填</span>
+                                </label>
+                            </div>
+                            <div class="line">
+                                <button class="btn btn-primary icon-wrap" data-bind="click: write.bind($data, 'textarea')">
+                                    <span class="icon icon-add"></span>
+                                    <span>确认添加</span>
+                                </button>
+                                <span class="error" data-bind="text: textareaElement().msg"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- /ko -->
+
+                    <!-- ko if: eleType() == 4 -->
+                    <li class="chunk custom-container">
+                        <label class="left">
+                            <span>上传文件项名称：</span>
+                        </label>
+                        <div class="right">
+                            <div class="line">
+                                <input class="text-field" type="text" data-bind="textInput: fileuploadElement().title" maxlength="16" placeholder="上传文件项名称" />
+                            </div>
+                        </div>
+                        <label class="left fix-mt">
+                            <span>上传文件格式：</span>
+                        </label>
+                        <div class="right">
+                            <div class="line fix-line">
+                                <label class="checkbox-field">
+                                    <input type="checkbox" data-bind="checked: checkedAll" />
+                                    <span>全部</span>
+                                </label>
+                                <!-- ko foreach: allowTypeConfig()[0] -->
+                                <label class="checkbox-field">
+                                    <input type="checkbox" data-bind="value:$data, checked: $root.chooseAllowExt" />
+                                    <span data-bind="text:$data"></span>
+                                </label>
+                                <!-- /ko -->
+                            </div>
+                            <div class="line">
+                                <label class="radio-field">
+                                    <input type="radio" name="checkbox-require" data-bind="checked: fileuploadElement().must" value="1" />
+                                    <span>必填</span>
+                                </label>
+                                <label class="radio-field">
+                                    <input type="radio" name="checkbox-require" data-bind="checked: fileuploadElement().must" value="0" />
+                                    <span>非必填</span>
+                                </label>
+                            </div>
+                            <div class="line">
+                                <button class="btn btn-primary icon-wrap" data-bind="click: write.bind($data, 'fileupload')">
+                                    <span class="icon icon-add"></span>
+                                    <span>确认添加</span>
+                                </button>
+                                <span class="error" data-bind="text: fileuploadElement().msg"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main end -->
+<script type="text/javascript">
+    var defaultElement = <?php echo $aptoticElement ? $aptoticElement : ''; ?>;
+    var allowType      = <?php echo $allowType ? $allowType : ''; ?>;
+</script>
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

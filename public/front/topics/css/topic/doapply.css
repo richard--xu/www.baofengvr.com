@@ -1,0 +1,59 @@
+.wrap {
+  width: 1000px;
+  margin: 0 auto; }
+
+.content {
+  height: 643px;
+  background: #fff;
+  overflow: hidden; }
+  .content .success-img {
+    margin-left: 173px;
+    margin-top: 193px;
+    display: block;
+    float: left;
+    width: 241px;
+    height: 221px;
+    background: url(/front/topics/image/apply_success.gif) no-repeat; }
+  .content .apply-success {
+    float: left;
+    margin-left: 51px;
+    margin-top: 193px; }
+    .content .apply-success .report-success {
+      margin-top: 23px; }
+    .content .apply-success .icon-success {
+      display: block;
+      float: left;
+      width: 45px;
+      height: 45px;
+      background-position: 0px -69px; }
+    .content .apply-success .success-font {
+      float: left;
+      margin: -10px 0 48px 18px; }
+      .content .apply-success .success-font h3 {
+        font-family: 'Microsoft YaHei';
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 2px; }
+      .content .apply-success .success-font p {
+        font-family: 'SimSun';
+        font-size: 14px;
+        color: #555; }
+    .content .apply-success .go-report, .content .apply-success .report-msg {
+      font-family: 'SimSun';
+      font-size: 14px;
+      float: left;
+      line-height: 40px;
+      border-radius: 5px;
+      text-align: center; }
+    .content .apply-success .go-report {
+      background: #00a5ed;
+      color: #fff;
+      margin-right: 20px;
+      width: 160px;
+      height: 40px; }
+    .content .apply-success .report-msg {
+      width: 159px;
+      height: 39px;
+      background: #eee;
+      color: #333;
+      border: 1px solid #dfdfdf; }

@@ -1,0 +1,70 @@
+#header, #main, .main-wrap {
+    min-width: 1060px; 
+}
+.comment-view {
+    padding: 25px 0 25px 20px;
+    font-size: 14px;
+}
+.comment-view li {
+    margin-bottom: 14px;
+}
+
+.comment-view label,
+.comment-view span {
+    vertical-align: top;
+}
+
+.comment-view textarea {
+    border: 1px solid #ddd;
+    background: #eee;
+    width: 80%;
+    height: 116px;
+    padding: 5px;
+    resize: none;
+}
+
+.chunk-list .chunk {
+    overflow: hidden;
+}
+.chunk-list .chunk .left {
+    float: left;
+    display: block;
+    margin-top: 10px;
+    width: 140px;
+    text-align: right;
+}
+.chunk-list .chunk .left span {
+    font-weight: bold;
+}
+.chunk-list .chunk .right {
+    overflow: hidden;
+}
+.chunk-list .chunk .right p {
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+.authName {
+    position: relative;
+}
+.authName span {
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    width: 50px;
+    overflow: hidden;
+}
+.auth-pop {
+    display: none;
+    padding: 10px;
+    position: absolute;
+    left: -10px;
+    top: -13px;
+    width: 50px;
+    background-color: #fff;
+    z-index: 11;
+}
+
+.select-field {
+    padding: 10px 5px!important;
+}

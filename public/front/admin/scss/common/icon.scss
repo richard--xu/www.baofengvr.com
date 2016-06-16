@@ -1,0 +1,262 @@
+.icon-wrap {
+	span { vertical-align: middle; }
+}
+
+.icon {
+	display: inline-block;
+	background: url(../image/slice.png) no-repeat;
+}
+
+.icon-turnoff {
+	background-position: -23px -50px;
+	width: 24px;
+	height: 24px;
+	margin: 26px auto 0;
+}
+
+// Left-side Icon
+.icon-flag {	
+	background-position: -18px 0;
+	width: 18px;
+	height: 22px;
+}
+
+.icon-activity {
+	background-position: -56px 0;
+	width: 18px;
+	height: 22px;
+}
+
+.icon-production {
+	background-position: -95px 0;
+	width: 17px;
+	height: 20px;
+}
+
+.active {
+	.icon-flag { background-position: 0 0; }
+
+	.icon-activity { background-position: -36px 0; }
+
+	.icon-production { background-position: -76px 0; }
+}
+
+// Search Icon
+.icon-s {
+	background-position: -56px -50px;
+	width: 21px;
+	height: 17px;
+}
+
+// Cteate Button Icon
+.icon-plus {
+	background-position: 0 -50px;
+	width: 21px;
+	height: 21px;
+}
+
+// Grid Action
+.icon-view {
+	background-position: 0 -30px;
+	width: 18px;
+	height: 19px;
+}
+
+.icon-edit {
+	background-position: -40px -30px;
+	width: 18px;
+	height: 19px;
+}
+
+.icon-del {
+	background-position: -78px -29px;
+	width: 18px;
+	height: 19px;
+}
+
+.icon-offline {
+	background-position: -44px -115px;
+	width: 19px;
+	height: 10px;
+}
+
+.icon-online {
+	background-position: -98px -115px;
+	width: 19px;
+	height: 10px;
+}
+
+.icon-manage {
+	background-position: 0 -139px;
+	width: 18px;
+	height: 18px;
+}
+
+.icon-link {
+	background-position: -65px -118px;
+	width: 15px;
+	height: 15px;
+}
+
+.grid-action:hover {
+	.icon-view { background-position: -20px -30px; }
+
+	.icon-edit { background-position: -59px -30px; }
+
+	.icon-del { background-position: -98px -29px; }
+
+	.icon-offline { background-position: -44px -127px; }
+
+	.icon-online { background-position: -98px -127px; }
+
+	.icon-manage { background-position: -20px -139px; }
+
+	.icon-link { background-position: -81px -118px; }
+}
+
+.icon-h {
+	width: 5px;
+	height: 23px;
+	border-radius: 3px;
+	background: #00a5ed;
+}
+
+.icon-upload {
+	background-position: -86px -51px;
+	width: 24px;
+	height: 18px;
+}
+
+.icon-add {
+	background-position: 0 -115px;
+	width: 20px;
+	height: 20px;
+}
+
+.icon-switch-text {
+	background-position: 0 -85px;
+	width: 28px;
+	height: 16px;
+}
+
+.icon-switch-select {
+	background-position: -30px -85px;
+	width: 28px;
+	height: 28px;
+}
+
+.icon-switch-textarea {
+	background-position: -60px -85px;
+	width: 28px;
+	height: 19px;
+}
+
+.icon-switch-upload {
+	background-position: -86px -51px;
+	width: 24px;
+	height: 18px;
+}
+
+.icon-switch-other {
+	background-position: -19px -181px;
+	width: 17px;
+	height: 17px;
+}
+
+.icon-switch-class {
+	background-position: -60px -181px;
+	width: 20px;
+	height: 19px;
+}
+
+.icon-rm {
+	background-position: -22px -115px;
+	width: 20px;
+	height: 20px;
+}
+
+.icon-search {
+	background-position: -56px -50px;
+	width: 21px;
+	height: 17px;
+}
+
+.icon-download {
+	background-position: -73px -139px;
+	width: 21px;
+	height: 15px;
+}
+
+.icon-export {
+	background-position: -102px -71px;
+	width: 15px;
+	height: 14px;
+}
+
+.icon-prev {
+	background-position: -56px -69px;
+	width: 5px;
+	height: 9px;
+}
+
+.icon-next {
+	background-position: -70px -69px;
+	width: 5px;
+	height: 9px;
+}
+
+.icon-detail {
+	background-position: -40px -139px;
+	width: 15px;
+	height: 15px;
+}
+
+.icon-load {
+	background-position: -73px -139px;
+	width: 21px;
+	height: 15px;
+}
+
+.icon-comment {
+	background-position: 0 -159px;
+	width: 19px;
+	height: 19px;
+}
+
+.icon-wrap:hover {
+	.icon-download { background-position: -96px -139px; }
+
+	.icon-export { background-position: -102px -87px; }
+
+	.icon-del { background-position: -98px -29px; }
+
+	.icon-online { background-position: -98px -127px; }
+
+	.icon-detail { background-position: -56px -139px; }
+
+	.icon-load { background-position: -96px -139px; }
+
+	.icon-comment { background-position: -21px -159px; }
+
+	.icon-switch-other { background-position: 0 -181px; }
+	
+	.icon-switch-class { background-position: -38px -181px; }
+}
+
+.icon-progress-left {
+	background-position: 0 -79px;
+	width: 44px;
+	height: 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.icon-progress-right {
+	background-position: -46px -79px;
+	width: 17px;
+	height: 5px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}

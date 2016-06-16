@@ -1,0 +1,39 @@
+.paglist{
+	a{
+		border-radius: 3px;
+		display: block;
+		float: left;
+	}
+	.pre-list,.nxt-list{
+		width:58px;
+		height: 28px;
+		line-height: 28px;
+		border:1px solid #ddd;
+		color:#333;
+		background:#eee;
+		text-align: center;
+	}
+	.nxt-list{
+		margin-left: 10px;
+	}
+	.data-list{
+		text-align: center;
+		width:28px;
+		height:28px;
+		line-height: 28px;
+		background:#eee;
+		border:1px solid #ddd;
+		color:#333;
+		margin-left: 10px;
+	}
+	.data-listA{
+		background:#00a5ed;
+		border:1px solid #00a5ed;
+		color:#fff;
+	}
+	.list-dot{
+		text-align: center;
+		margin-left: 10px;
+		color:#333;
+	}
+}

@@ -1,0 +1,135 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">
+
+        <div class="title-bar">
+            <h3 class="icon-wrap">
+                <span class="icon icon-h"></span>
+                <span>广告管理</span>
+            </h3>
+        </div>
+        <!-- grids -->
+        <div class="grid">
+            <!-- 头部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <button class="btn btn-primary export-btn icon-wrap" nt="addnew">
+                        <span class="icon icon-plus"></span>
+                        <span>新增广告</span>
+                    </button>
+                </div>
+            </div>
+            <!-- table -->
+            <table class="grid-body">
+                <thead>
+                    <tr>
+                        <!-- <th>
+                            <input type="checkbox" nt="checkAll"/>
+                        </th> -->
+                        <th>ID</th>
+                        <th>位置</th>
+                        <th>图片</th>
+                        <th>链接</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tbd">
+                <?php 
+                    if ($advert) {
+                        foreach ($advert as $value) { 
+                ?>
+                    <tr>
+                        <!--<td>
+                            <input type="checkbox" nt="check" data-id="<?php echo $value['id'] ?>"/>
+                        </td>-->
+                        <td><?php echo $value['id']; ?></td>
+                        <td>
+                            <?php
+                                echo isset($category[$value['location']]) 
+                                            ? $category[$value['location']]['name'] 
+                                            : '';
+                            ?>
+                        </td>
+                        <td>
+                            <?php echo '<img src="'. $value['pic']. '" style="height:80px;">'; ?>
+                        </td>
+                        <td>
+                            <?php echo '<a href="'.(
+                                                    strpos($value['link'], 'http://') !== false 
+                                                        ? $value['link'] 
+                                                            : 'http://'. $value['link']
+                                                   ).'">'.$value['link'].'</a>'; ?>
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="addnew" data-id="<?php echo $value['id'] ?>">
+                                <span class="icon icon-edit"></span>
+                                <span>编辑</span>
+                            </a>
+                            <a href="javascript:;" class="grid-action icon-wrap" nt="delete" data-delete="<?php echo $value['id'] ?>">
+                                <span class="icon icon-del"></span>
+                                <span>删除</span>
+                            </a>
+                        </td>
+                    </tr>
+                <?php }} ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- grids end -->
+    </div>
+</div>
+<script type="text/html" id="dealTpl">
+    <form id="dealForm">
+        <ul class="chunk-list search">
+            <li class="chunk">
+                <label class="left">
+                    <span>链接：</span>
+                </label>
+                <div class="right">
+                    <input type="text" name="link" class="text-field" placeholder="请输入作品标题" value="${link}" />
+                </div>
+            </li>
+            <li class="chunk">
+                <label class="left">
+                    <span>图片：</span>
+                </label>
+                <div class="right">
+                    <a class="up-file" id="loadImg" href="javascript:void(0)"></a>
+                    <div id="showImg">
+                     {@if pic}
+                        <img src="${pic}" style="width: 150px;" >
+                     {@/if}
+                     </div>
+                     <input type="hidden" name="pic" value="${pic}" />
+                </div>
+            </li>
+            <li class="chunk">
+                <label class="left">
+                    <span>所在位置：</span>
+                </label>
+                <div class="right">
+                    <select name="location" class="select-field">
+                        <option value="">请选择</option>
+                        <?php
+                            if ($category) {
+                                foreach ($category as $key => $value) { 
+                        ?>
+                        <option value="<?php echo $value['id']; ?>" {@if location == <?php echo $value['id']; ?>} selected {@/if} >
+                            <?php echo $value['name']; ?>
+                        </option>
+                        <?php }} ?>
+                    </select>
+                    {@if id}
+                        <input type="hidden" name="id" value="${id}" />
+                     {@/if}
+                </div>
+            </li>
+        </ul>
+    </form>
+</script>
+<script type="text/javascript">
+    var advert = <?php echo $advert ? json_encode($advert) : 'null'; ?>;
+</script>
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

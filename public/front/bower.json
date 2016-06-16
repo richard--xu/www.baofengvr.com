@@ -1,0 +1,12 @@
+{
+  "name": "zz",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.1",
+    "es5-shim": "~4.3.1",
+    "handlebars": "~4.0.5",
+    "modernizr": "~2.8.1",
+    "moment": "~2.10.6",
+    "pikaday": "~1.4.0"
+  }
+}

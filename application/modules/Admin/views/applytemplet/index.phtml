@@ -1,0 +1,134 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">   
+        <!-- create -->
+        <div class="create-box">
+            <a href="/sites/admin/applytemplet/add" class="btn btn-secondary icon-wrap">
+                <span class="icon icon-plus"></span>
+                <span>创建报名模板</span>
+            </a>
+        </div>
+
+        <!-- search -->
+        <div class="search">
+            <form action="/sites/admin/applytemplet/index" method="get">
+                <label class="field-wrap">
+                    <span>报名表名称：</span>
+                </label>
+                <span class="input-field">
+                    <input class="ipt" name="name" placeholder="请输入您要搜索的报名表名称" type="text" value="<?php echo $name; ?>" />
+                </span>
+                <button class="button search-btn icon-wrap">
+                    <span class="icon icon-s"></span>
+                    <span>搜索</span>
+                </button>
+            </form>
+        </div>
+        <!-- grids -->
+
+        <div class="grid">
+
+            <!-- 头部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <button class="btn btn-primary del-btn icon-wrap" data-bind="click: removeItems, visible: checkedCount">
+                        <span class="icon icon-del"></span>
+                        <span>删除</span>
+                    </button>
+                </div>
+                <div class="fr">
+                    <?php
+                        echo $shortList;
+                    ?>
+                </div>
+            </div>
+
+            <!-- table -->
+            <table class="grid-body">
+                <thead>
+                    <tr>
+                        <th>
+                            <input data-bind="checked: allChecked, visible: list().length" type="checkbox" />
+                        </th>
+                        <th>编号</th>
+                        <th>报名表名称</th>
+                        <th>报名表生成时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <!-- ko foreach: list -->
+                    <tr>
+                        <td><input data-bind="checked: owned" type="checkbox" /></td>
+                        <td data-bind="text: id"></td>
+                        <td data-bind="text: name"></td>
+                        <td data-bind="text: addTime"></td>
+                        <td>
+                            <a class="grid-action icon-wrap" data-bind="click: $parent.viewMore" href="#">
+                                <span class="icon icon-detail"></span>
+                                <span>查看</span>
+                            </a>
+                            <a class="grid-action icon-wrap" data-bind="attr: { href: editUrl }">
+                                <span class="icon icon-edit"></span>
+                                <span>编辑</span>
+                            </a>
+                            <a class="grid-action icon-wrap" data-bind="click: $parent.removeItem" href="#">
+                                <span class="icon icon-del"></span>
+                                <span>删除</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </thead>
+            </table>
+            <!-- 底部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <button class="btn btn-primary del-btn icon-wrap" data-bind="click: removeItems, visible: checkedCount">
+                        <span class="icon icon-del"></span>
+                        <span>删除</span>
+                    </button>
+                </div>
+                <div class="fr">
+                    <?php echo $pageList; ?>
+                </div>
+            </div>
+        </div>
+        <!-- grids end -->
+    </div>
+</div>
+<!-- main end -->
+<script type="text/javascript">
+    var list = <?php
+                    if ($list) {
+                        foreach ($list as $key => &$value) {
+                            $value['addTime'] = date('Y-m-d', $value['addTime']);
+                        }
+                        unset($value);
+                    }
+                    echo $list ? json_encode($list) : 'null'; 
+               ?>;
+</script>
+
+<!-- dialog for viewmore -->
+<script type="text/html" id="dialog-viewmore-tpl">
+    <div class="form-field">
+        <div class="dialog-for-more">
+            <ul class="chunk-list">
+                {{#each content}}
+                <li class="chunk">
+                    <label class="left">
+                        {{#require must}} <span class="red">*</span> {{/require}}
+                        <span>{{title}}：</span>
+                    </label>
+                    <div class="right">
+                        {{{field this}}}
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</script>
+
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

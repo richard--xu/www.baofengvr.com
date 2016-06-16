@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><?php echo $pageTitle; ?></title>
+        <!-- Loading Css -->
+        <link rel="stylesheet" href="/front/admin/css/login.css">
+    </head>
+    <body>
+	<div class="login_container">
+		<span class="boya_login_ico"></span>
+		<div class="login_container_inner">
+			<div class="login_top"></div>
+			<div class="login_center">
+				<p class="login_tips">VR后台管理系统</p>
+				<form>
+					<div class="name_outer">
+						<input autocomplete="off" class="name_inner" type='text' name="username" placeholder="用户名" value='' />
+					</div>
+					<div class="pwd_outer">
+						<input autocomplete="off" class="pwd_inner" type='password' placeholder="密 码" name="password" value='' />
+					</div>
+					<a class="login_botton" href='javascript:;'>登 录</a>
+					<div class="login-error-wrap"></div>
+				</form>
+			</div>	
+		</div>
+		<div class="login_bottom"></div>	
+	</div>
+<script type="text/javascript" src="/front/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/front/admin/js/login/login.js"></script>
+</body>
+</html>

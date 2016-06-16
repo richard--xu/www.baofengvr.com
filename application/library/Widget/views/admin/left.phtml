@@ -1,0 +1,20 @@
+<!-- left -->
+<div class="left-side">
+    <ul class="side-menu">
+        <?php
+            if ($menu) {
+                foreach ($menu as $key => $value) {
+                    if (!isset($_SESSION['isAdmin']) || !in_array($_SESSION['isAdmin'], $value['right'])) {
+                        continue;
+                    }
+        ?>
+        <li class="item">
+            <a class="<?php echo $current == $key ? 'active ' : '' ?>icon-wrap" href="<?php echo $value['url']; ?>">
+                <span class="icon<?php echo $current == $key ? ' icon-flag' : ' icon-activity' ?>"></span>
+                <span><?php echo $key; ?></span>
+            </a>
+        </li>
+        <?php }} ?>
+    </ul>
+</div>
+<!-- left end -->

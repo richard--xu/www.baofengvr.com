@@ -1,0 +1,102 @@
+<?php include_once $this->getScriptPath() . '/header.phtml'; ?>
+<?php new Widget_Admin_Left(); ?>
+<!-- main -->
+<div id="main">
+    <div class="main-wrap">
+
+        <div class="title-bar">
+            <h3 class="icon-wrap">
+                <span class="icon icon-h"></span>
+                <span>分类管理</span>
+            </h3>
+        </div>
+        <!-- grids -->
+        <div class="grid">
+            <!-- 头部功能栏 -->
+            <div class="grid-bar">
+                <div class="fl">
+                    <button class="btn btn-primary export-btn icon-wrap" nt="addnew" data-parent="0">
+                        <span class="icon icon-plus"></span>
+                        <span>新增顶级分类</span>
+                    </button>
+                </div>
+            </div>
+            <!-- table -->
+            <table class="grid-body">
+                <thead>
+                    <tr>
+                        <!-- <th>
+                            <input type="checkbox" nt="checkAll"/>
+                        </th> 
+                        <th>ID</th>-->
+                        <th>分类名称</th>
+                        <th>父类名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tbd">
+                    <?php echo showList($category); ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- grids end -->
+    </div>
+</div>
+<?php
+function showList($list, $parent = '无') {
+    $listString = '';
+    if ($list) {
+        foreach ($list as $value) {
+            $listString .= '<tr '.($parent == '无' ?'style="background-color: floralwhite;"' : '').'>
+                <!--<td>
+                    <input type="checkbox" nt="check" data-id="'.$value['id'].'"/>
+                </td>-->
+                <!--<td>
+                    '.$value['id'].'
+                </td>-->
+                <td>
+                    '.($parent == '无' ? $value['name'] 
+                                       : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. $value['name']).'
+                </td>
+                <td>
+                    '.$parent.'
+                </td>
+                <td>'.( $parent == '无' ?
+                    '<a href="javascript:;" class="grid-action icon-wrap" data-parent="'.$value['id'].'"  nt="addnew" >
+                        <span class="icon icon-plus"></span>
+                        <span>新增子分类</span>
+                    </a>' :'').'
+                    <a href="javascript:;" class="grid-action icon-wrap" nt="addnew" data-id="'.$value['id'].'" data-name="'.$value['name'].'">
+                        <span class="icon icon-edit"></span>
+                        <span>编辑</span>
+                    </a>
+                    <a href="javascript:;" class="grid-action icon-wrap" nt="delete" data-delete="'.$value['id'].'">
+                        <span class="icon icon-del"></span>
+                        <span>删除</span>
+                    </a>
+                </td>
+            </tr>';
+            $listString .= isset($value['child']) && $value['child'] 
+                                    ? showList($value['child'], $value['name']) : '';
+        }
+    }
+    return $listString;
+}
+?>
+<script type="text/html" id="dealTpl">
+    <form action="" method="post" id="dealForm">
+        <ul class="chunk-list search">
+            <li class="chunk">
+                <label class="left">
+                    <span>分类名称：</span>
+                </label>
+                <div class="right">
+                    <input type="text" name="name" class="text-field" placeholder="请输入分类名称" value="${name}" />
+                    <input type="hidden" name="pid" value="${parent}" />
+                    <input type="hidden" name="id" value="${id}" />
+                </div>
+            </li>
+        </ul>
+    </form>
+</script>
+<?php include_once $this->getScriptPath() . '/footer.phtml'; ?>

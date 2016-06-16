@@ -1,0 +1,298 @@
+.register-msg .msg-title {
+  margin-top: 32px; }
+  .register-msg .msg-title .title-ico {
+    width: 5px;
+    height: 30px;
+    background: #00a5ed;
+    border-radius: 2px;
+    float: left;
+    margin-right: 11px; }
+  .register-msg .msg-title .title-font {
+    font-family: 'Microsoft YaHei';
+    font-size: 24px;
+    color: #333;
+    float: left;
+    margin-top: -9px; }
+  .register-msg .msg-title .title-line {
+    width: 834px;
+    height: 1px;
+    float: right;
+    background: #ddd;
+    margin-top: 15px; }
+
+.register-form {
+  padding: 70px 0px 90px; }
+  .register-form .form-ul .it {
+    float: left;
+    width: 100%;
+    padding-bottom: 12px;
+    font-family: 'SimSun';
+    font-size: 14px;
+    line-height: 40px; }
+    .register-form .form-ul .it .it-dot {
+      color: #ff0000; }
+    .register-form .form-ul .it .error-tips {
+      font-family: 'SimSun';
+      font-size: 14px;
+      color: #ff1313;
+      /*float: left;*/
+      /*display: block;*/
+      margin-left: 11px;
+      margin-top: 5px; }
+      label.error{
+        font-size: 14px;
+        color: #ff1313;
+        margin-left: 42px;
+      }
+    .register-form .form-ul .it .form_label {
+      float: left;
+      text-align: right;
+      width: 205px;
+      margin-right: 15px;
+      color: #666;
+      display: block;
+      height: 32px; }
+    .register-form .form-ul .it .form_putwarp {
+      float: left;
+      text-align: left;
+      color: #333;
+      position: relative; }
+      .register-form .form-ul .it .form_putwarp .tips-hide {
+        position: absolute;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px 0px 5px 15px;
+        left: 0px;
+        top:-3px;
+        color: #ccc; }
+        .register-form .form-ul .it .tips-hide {
+        position: absolute;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px 0px 5px 15px;
+        left: 0px;
+        top:-3px;
+        color: #ccc; }
+      .register-form .form-ul .it .form_putwarp .tips-hide1 {
+        position: absolute;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px 0px 5px 15px;
+        color: #ccc;
+        top:-3px;
+        left: 150px; }
+        .register-form .form-ul .it  .tips-hide1 {
+        position: absolute;
+        height: 40px;
+        line-height: 40px;
+        padding: 5px 0px 5px 15px;
+        color: #ccc;
+        top:-3px;
+        left: 150px; }
+      .register-form .form-ul .it .form_putwarp input {
+        border: 1px solid #ddd;
+        padding: 5px 0px  5px 15px;
+        height: 32px;
+        line-height: 32px;
+        color: #ccc; }
+        .register-form .form-ul .it  input {
+        border: 1px solid #ddd;
+        padding: 5px 0px  5px 15px;
+        height: 32px;
+        line-height: 32px;
+        color: #333; }
+      .register-form .form-ul .it .form_putwarp .fp_input {
+        width: 433px;
+        height: 32px;
+        line-height: 32px;
+        padding: 5px 0px  5px 15px;
+        float: left;
+        color: #333; }
+      .register-form .form-ul .it .form_putwarp .fp_input_s {
+        float: left;
+        width: 113px; }
+        .register-form .form-ul .it .fp_input_s {
+        float: left;
+        width: 113px; }
+      .register-form .form-ul .it .form_putwarp .form-line {
+        display: block;
+        width: 6px;
+        height: 1px;
+        background: #333;
+        float: left;
+        margin: 22px 9px 0px; }
+        .register-form .form-ul .it  .form-line {
+        display: block;
+        width: 6px;
+        height: 1px;
+        background: #333;
+        float: left;
+        margin: 22px 9px 0px; }
+      .register-form .form-ul .it .form_putwarp .fp_input_b {
+        width: 273px;
+        float: left; }
+        .register-form .form-ul .it .fp_input_b {
+        width: 273px;
+        float: left; }
+      .register-form .form-ul .it .form_putwarp .right-ico {
+        display: block;
+        width: 22px;
+        height: 22px;
+        float: left;
+        margin-top: 11px;
+        margin-left: 10px;
+        background-position: 0px -115px; }
+      .register-form .form-ul .it .form_putwarp .error-ico {
+        display: block;
+        width: 22px;
+        height: 22px;
+        float: left;
+        margin-top: 11px;
+        margin-left: 10px;
+        background-position: -26px -115px; }
+      .register-form .form-ul .it .form_putwarp .add-ico {
+        display: block;
+        width: 25px;
+        height: 25px;
+        /*float: left;*/
+        position: absolute;
+        left:442px;
+        top:-2px;
+        margin-top: 11px;
+        margin-left: 10px;
+        background-position: 0px -138px; }
+        .register-form .form-ul .it .form_putwarp .delete-ico {
+        display: block;
+        width: 25px;
+        height: 25px;
+        float: left;
+        margin-top: 11px;
+        margin-left: 10px;
+        background-position:-53px -138px; }
+        .register-form .form-ul .it .delete-ico {
+        display: block;
+        width: 25px;
+        height: 25px;
+        /*float: left;*/
+        position: absolute;
+        left:663px;
+        top:-2px;
+        margin-top: 11px;
+        margin-left: 10px;
+        background-position:-53px -138px; }
+      .register-form .form-ul .it .form_putwarp .add-ico:hover {
+        background-position: -26px -138px; }
+      .register-form .form-ul .it .form_putwarp .fp_input:focus {
+        color: #333;
+        border-color: #00a5ed;
+        box-shadow: 0px 0px 4px #aae1f9; }
+        .register-form .form-ul .it  .fp_input:focus {
+        color: #333;
+        border-color: #00a5ed;
+        box-shadow: 0px 0px 4px #aae1f9; }
+      .register-form .form-ul .it .form_putwarp .button-save {
+        border: none;
+        width: 160px;
+        height: 44px;
+        background: #00a5ed;
+        color: #fff;
+        border-radius: 5px; }
+      .register-form .form-ul .it .form_putwarp .confirm-msg {
+        vertical-align: middle; }
+      .register-form .form-ul .it .form_putwarp .check-msg {
+        font-size: 12px;
+        color: #333; }
+
+#loadArt .uploadify-button {
+  width: 158px;
+  height: 42px;
+  line-height: 42px;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #666;
+  font-family: 'SimSun';
+  font-size: 14px;
+  text-shadow: none; }
+
+.award-detail{
+  /*position: relative;*/
+  position: absolute;
+  top:2px;
+  left: 0px;
+  display: block;
+  width:141px;
+  height: 36px;
+  line-height: 36px;
+  border:1px solid #d0cfcf; 
+  padding-left: 6px;
+  color: #333;
+  font-family: 'SimSun';
+  font-size: 12px;
+  /*background: #fff;*/
+}
+.award-detail:hover{
+  color: #333;
+}
+.award-detail .list-ico{
+  position: absolute;
+  width:28px;
+  height:36px;
+  top:0px;
+  right:0px;
+  border-left: 1px solid #d0cfcf;
+  background: #eee;
+}
+.award-detail .ico-trig{
+  position: absolute;
+  width:9px;
+  height: 6px;
+  background-position:-60px -175px;
+  top:17px;
+  right:11px;
+}
+.award-list{
+  position: absolute;
+  top:38px;
+  left:0px;
+  z-index: 100;
+  width: 147px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 2px #f0f0f0;
+}
+.award-list li{
+  height: 34px; 
+  overflow: hidden;
+}
+.award-list .item{
+  display: block;
+  padding-left: 18px;
+  line-height: 34px;
+  background: #fff;
+  color: #333;
+}
+.award-list .item:hover{
+  background: #eee;
+  color: #333;
+}
+.comm-inner{
+  display:inline-block; 
+  float: left; 
+  position:relative;
+}
+.many-input{
+  position: relative;
+}
+#check-msg{
+  border:none !important;
+}
+.award-data{
+  width: 141px;
+  height: 36px !important;
+  line-height: 36px;
+  border: 1px solid #d0cfcf;
+  padding:0 0 0 6px !important;
+  color: #333 !important;
+  font-family: 'SimSun';
+  font-size: 12px;
+}

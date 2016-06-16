@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?php echo $pageTitle; ?></title>
+    <?php
+        if ($cssLoadPath = Common::loadCssAndJsUrl(lcfirst($curModule), lcfirst($curController), lcfirst($curAction), 'css')) {
+            foreach ($cssLoadPath as $css) {
+                echo '<link rel="stylesheet" href="' . $css . '">';
+            }
+        }
+    ?>
+</head>
+<body>
+    <!-- header -->
+    <div id="header">
+        <!-- logo -->
+        <div id="logo" class="fl">
+            <h1>VR后台管理系统</h1>
+        </div>
+        <!-- nav -->
+        <div class="nav fr">
+            <a class="user-info" href="javascript:void(0)">
+                <!--<img class="avatar" src="<?php echo $_SESSION['uid']; ?>" alt="易班中职" />-->
+                <span><?php echo $_SESSION['uname']; ?></span>
+            </a>
+            <a class="turnoff" href="/admin/login/loginout">
+                <span class="icon icon-turnoff"></span>
+            </a>
+        </div>
+    </div>
+    <!-- header end -->

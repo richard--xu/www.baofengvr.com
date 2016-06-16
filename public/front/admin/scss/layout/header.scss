@@ -1,0 +1,42 @@
+#header {
+	background: #eee;
+	height: 69px;
+	border-bottom: 1px solid #ddd;
+	min-width: 1000px;
+	overflow: hidden;
+}
+
+#logo {
+	background: url(../image/logo.gif) no-repeat 0 0;
+	width:132px;
+	height: 40px;
+	overflow: hidden;
+	margin-left: 18px;
+	margin-top: 15px;
+	h1 { text-indent: -99em; }
+}
+
+.nav {
+	a {
+		color: #333;
+		display: inline-block;
+		height: 69px;
+		line-height: 69px;
+		padding: 0 25px;
+		text-align: center;
+		vertical-align: middle;
+
+		&:hover { background: #e4e4e4; }
+	}
+
+	.user-info {
+		.avatar {
+			width: 40px;
+			height: 40px;
+			border-radius: 100%;
+			margin-right: 6px;
+		}
+	}
+
+	.turnoff { }
+}

@@ -1,0 +1,53 @@
+// reset
+@import "core/_base";
+
+html {
+	font-size: 100%;
+	overflow-y: hidden;
+}
+
+body {
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.fl { float: left; }
+
+.fr { float: right; }
+
+.none{ display:none; }
+
+.red { color: #f00; }
+.pos-magt40{
+	margin-top:40px;
+}
+@include min-screen(1280px) {
+	body { font-size: 0.875em; }
+}
+
+@include max-screen(1280px) {
+	body { font-size: 0.75em; }
+}
+
+// common
+@import "common/icon";
+
+@import "common/field";
+
+@import "common/button";
+
+@import "common/component";
+
+@import "common/list";
+
+@import "common/page";
+
+@import "layout/header";
+
+@import "layout/left";
+
+@import "layout/main";
+
+// vendor
+@import "vendor/pikaday";
+
